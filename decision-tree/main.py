@@ -34,20 +34,13 @@ def print_confusion_matrix(y_true, y_pred):
     cm_df.columns.name = 'Predicted'
     print(cm_df)
     
-    # Print classification report for additional metrics
-    print("\nClassification Report:")
-    print(classification_report(y_true, y_pred, labels=classes, zero_division=0))
-
 def evaluate_dataset(train_file, test_file, dataset_name):
-    print(f"\n{'='*60}")
     print(f"Dataset: {dataset_name}")
-    print(f"{'='*60}")
     
     X_train, y_train = load_data(train_file)
     X_test, y_test = load_data(test_file)
     
-    # Test different max_depth values for Decision Tree
-    max_depths = [None, 3, 5, 10, 15]
+    max_depths = [5]
     
     best_accuracy = 0
     best_depth = None
@@ -66,12 +59,7 @@ def evaluate_dataset(train_file, test_file, dataset_name):
             best_accuracy = accuracy
             best_depth = depth
             best_predictions = predictions
-    
-    print(f"\n{'='*40}")
-    print(f"BEST RESULT: max_depth={best_depth if best_depth else 'None'}")
-    print(f"Best Accuracy: {best_accuracy:.4f} ({best_accuracy*100:.2f}%)")
-    print(f"{'='*40}")
-    
+        
     print_confusion_matrix(y_test, best_predictions)
 
 def main():
@@ -79,7 +67,7 @@ def main():
         ('data/iris/iris.trn', 'data/iris/iris.tst', 'Iris'),
         ('data/optics/opt.trn', 'data/optics/opt.tst', 'Optics'),
         ('data/letter/let.trn', 'data/letter/let.tst', 'Letter'),
-        ('data/faces/data.trn', 'data/faces/data.tst', 'Face'),
+        ('data/leukemia/ALLAML.trn', 'data/leukemia/ALLAML.tst', 'Leukemia'),
         ('data/fp/fp.trn', 'data/fp/fp.tst', 'Fp')
     ]
     
