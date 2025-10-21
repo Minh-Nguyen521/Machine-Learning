@@ -1,9 +1,6 @@
 import pandas as pd
-from collections import Counter
-import numpy as np
 from sklearn.linear_model import Perceptron
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, ConfusionMatrixDisplay
-import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, accuracy_score
 
 def load_data(file_path):
     df = pd.read_csv(file_path, sep=r'[\s,]+', header=None, engine='python')
