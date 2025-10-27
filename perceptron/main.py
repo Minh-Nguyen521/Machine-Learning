@@ -8,8 +8,8 @@ def load_data(file_path):
     y = df.iloc[:, -1].values   
     return X, y
 
-def perceptron(X_train, y_train, X_test, random_state=42):
-    clf = Perceptron(random_state=random_state, max_iter=100, tol=1e-3, eta0=0.0001)
+def perceptron(X_train, y_train, X_test, max_iter, eta, random_state=42):
+    clf = Perceptron(random_state=random_state, max_iter=max_iter, eta0=eta)
     clf.fit(X_train, y_train)
 
     predictions = clf.predict(X_test)
@@ -26,6 +26,7 @@ def print_confusion_matrix(y_true, y_pred):
     
     print("\nConfusion Matrix:")
     # Create a pandas DataFrame for cleaner display
+
     cm_df = pd.DataFrame(cm, index=classes, columns=classes)
     cm_df.index.name = 'Actual'
     cm_df.columns.name = 'Predicted'
@@ -43,17 +44,23 @@ def evaluate_dataset(train_file, test_file, dataset_name):
     print(f"\nPerceptron")
     print("-" * 40)
 
-    predictions = perceptron(X_train, y_train, X_test)
-    accuracy = calculate_accuracy(y_test, predictions)
-    
-    print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
-    
-    if accuracy > best_accuracy:
-        best_accuracy = accuracy
-        best_predictions = predictions
-        
-    print_confusion_matrix(y_test, best_predictions)
+    iter = [10, 20, 30]
+    eta = [0.01, 0.05, 0.1, 0.2, 0.5]
 
+    for max_iter in iter:
+        for learning_rate in eta:
+            predictions = perceptron(X_train, y_train, X_test, max_iter, learning_rate)
+            accuracy = calculate_accuracy(y_test, predictions)
+    
+            print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
+            
+            if accuracy > best_accuracy:
+                best_accuracy = accuracy
+                best_predictions = predictions
+                
+            print_confusion_matrix(y_test, best_predictions)
+            print(f"Max Iterations: {max_iter}, Learning Rate: {learning_rate}")
+    print()
 def main():
     datasets = [
         ('data/iris/iris.trn', 'data/iris/iris.tst', 'Iris'),
