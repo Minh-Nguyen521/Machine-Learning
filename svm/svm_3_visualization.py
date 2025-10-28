@@ -89,11 +89,5 @@ def main():
     # Create simple SVM plot
     svm_clf = plot_svm_simple(X, y, kernel='rbf', C=10)
     plt.show()
-    
-    # Print basic info
-    print(f"Number of support vectors: {len(svm_clf.support_vectors_)}")
-    print(f"Kernel: RBF")
-    print(f"C parameter: 10")
-
 if __name__ == "__main__":
     main()

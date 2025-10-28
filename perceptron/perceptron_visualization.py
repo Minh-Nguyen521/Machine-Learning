@@ -33,7 +33,7 @@ if __name__ == "__main__":
     y = np.array(labels)
 
     # Train perceptron
-    clf = Perceptron(max_iter=10, tol=1e-3, eta0=0.2)
+    clf = Perceptron(max_iter=3, tol=1e-3, eta0=0.2)
     clf.fit(X, y)
 
     # Plot decision boundary

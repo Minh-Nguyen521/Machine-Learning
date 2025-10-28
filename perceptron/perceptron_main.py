@@ -42,7 +42,6 @@ def evaluate_dataset(train_file, test_file, dataset_name):
     best_predictions = None
     
     print(f"\nPerceptron")
-    print("-" * 40)
 
     iter = [10, 20, 30]
     eta = [0.01, 0.05, 0.1, 0.2, 0.5]
