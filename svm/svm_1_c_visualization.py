@@ -16,13 +16,6 @@ b = clf.intercept_[0]
 slope = -w[0] / w[1]
 y_intercept = -b / w[1]
 
-# # 4. Print model details
-# print(f"Weights (w): {w}")
-# print(f"Intercept (b): {b[0]:.4f}")
-# print(f"Slope (a): {slope:.4f}")
-# print(f"Y-Intercept (c): {y_intercept:.4f}")
-# print(f"Support Vectors:\n{clf.support_vectors_}")
-
 # 5. Plotting
 plt.figure(figsize=(10, 9))
 xx = np.linspace(-0.5, 1.5)
