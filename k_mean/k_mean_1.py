@@ -35,9 +35,6 @@ def kmeans_classifier(X_train, n_clusters=3, random_state=42):
     kmeans.fit(X_train)
     return kmeans
     
-def calculate_accuracy(y_true, y_pred):
-    return accuracy_score(y_true, y_pred)
-
 def visualize_kmeans(X_train, kmeans):
     plt.figure(figsize=(12, 6))
     
@@ -52,16 +49,13 @@ def visualize_kmeans(X_train, kmeans):
         plt.scatter(cluster_points[:, 0], cluster_points[:, 1], 
                    c=colors[i], label=f'Cluster {i}', s=50, alpha=0.7)
     
-    plt.title('K-Means Clustering (4 Clusters)', fontsize=14)
+    plt.title('K-Means Clustering', fontsize=14)
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
     plt.show()
 
 def main():
-    print(f"\nKMeans Clustering")
-    print("-" * 40)
-
     data_array = np.array(data)
     n_clusters = 4
     
