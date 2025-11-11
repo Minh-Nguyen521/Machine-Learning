@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.cluster import KMeans
-from sklearn.metrics import confusion_matrix, accuracy_score
 import matplotlib.pyplot as plt
 import numpy as np
 

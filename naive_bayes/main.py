@@ -11,11 +11,9 @@ def load_data(file_path):
     return X, y
 
 def naive_bayes_classifier(X_train, y_train, X_test):
-    # Create and train the Gaussian Naive Bayes classifier
     nb_classifier = GaussianNB()
     nb_classifier.fit(X_train, y_train)
     
-    # Make predictions on the test set
     predictions = nb_classifier.predict(X_test)
     
     return predictions
