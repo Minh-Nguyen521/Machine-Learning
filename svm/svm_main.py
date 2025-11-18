@@ -36,10 +36,6 @@ def evaluate_dataset(train_file, test_file, dataset_name):
     
     X_train, y_train = load_data(train_file)
     X_test, y_test = load_data(test_file)
-        
-    best_accuracy = 0
-    best_predictions = None
-    best_params = None
     
     print(f"\nSVM Classification")
     print("-" * 40)
